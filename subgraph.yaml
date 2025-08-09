@@ -1,0 +1,32 @@
+specVersion: 1.3.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Adoption
+    network: sepolia
+    source:
+      address: "0x16782C5ea6f0666030Aa1C7B34a5323fde2eDBbb"
+      abi: Adoption
+      startBlock: 8944719
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - PetAdopted
+        - PetFed
+        - Withdraw
+      abis:
+        - name: Adoption
+          file: ./abis/Adoption.json
+      eventHandlers:
+        - event: PetAdopted(indexed address,string,uint256)
+          handler: handlePetAdopted
+        - event: PetFed(indexed address,string,uint256)
+          handler: handlePetFed
+        - event: Withdraw(indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/adoption.ts

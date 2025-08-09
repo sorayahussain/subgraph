@@ -1,0 +1,28 @@
+type PetAdopted @entity(immutable: true) {
+  id: Bytes!
+  adopter: Bytes! # address
+  petId: String! # string
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PetFed @entity(immutable: true) {
+  id: Bytes!
+  feeder: Bytes! # address
+  petId: String! # string
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Withdraw @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
